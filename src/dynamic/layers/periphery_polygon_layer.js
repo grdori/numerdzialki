@@ -6,10 +6,6 @@ export const PeripheryPolygonLayer = ({ data }) => {
   const leafletMap = useMap();
   const [colorMouseOver, setColorMouseOver] = useState("blue");
   const [fillOpacity, setFillOpacity] = useState(0.1);
-  const useDefaultColors = () => {
-    setColorMouseOver("blue");
-    setFillOpacity(0.1);
-  };
 
   return (
     <GeoJSON
@@ -24,7 +20,8 @@ export const PeripheryPolygonLayer = ({ data }) => {
               [bbox[2], bbox[3]],
             ]);
           });
-          useDefaultColors();
+          setColorMouseOver("blue");
+          setFillOpacity(0.1);
           return e.propagatedFrom.feature;
         },
         mouseover: (b) => {
@@ -33,7 +30,8 @@ export const PeripheryPolygonLayer = ({ data }) => {
           return b.propagatedFrom.feature;
         },
         mouseout: (c) => {
-          useDefaultColors();
+          setColorMouseOver("blue");
+          setFillOpacity(0.1);
           return c.propagatedFrom.feature;
         },
       }}

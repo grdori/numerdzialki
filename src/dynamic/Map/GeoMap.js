@@ -1,16 +1,16 @@
 import { useEffect, useState, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-import { LayersHandler } from "./layers_handler";
-import SearchBox from "./SearchBox";
-import Navigationbar from "./Navigationbar";
+import { LayersHandler } from "../layers/layers_handler";
+import SearchBox from "../Layout/SearchBox";
+import Navigationbar from "../Layout/Navigationbar";
 
 const icon = L.icon({
   iconUrl: "./znacznik_na_mapie_duzy.png",
   iconSize: [38, 38],
 });
 
-export const GeoMap = () => {
+const GeoMap = () => {
   const [position, setPosition] = useState([51.9189046, 19.1343786]);
   const [showIcon, setShowIcon] = useState(false);
   const [zoomMap, setZoomMap] = useState(7);
@@ -49,11 +49,11 @@ export const GeoMap = () => {
       if (position) {
         console.log("My position on the map", position);
         console.log("Zoom", zoomM);
-        map.setView(new L.LatLng(position[0], position[1]), zoomM, {
-          zoom: {
-            animate: true,
-          },
-        });
+        // map.setView(new L.LatLng(position[0], position[1]), zoomM, {
+        //   zoom: {
+        //     animate: true,
+        //   },
+        // });
       }
     }, [position]);
     return null;
@@ -94,3 +94,5 @@ export const GeoMap = () => {
     </>
   );
 };
+
+export default GeoMap;
